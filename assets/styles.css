@@ -524,7 +524,11 @@ h2 { font-weight: 400; }
   background: #f5f4f1 url("moneytree-card-3.jpg") top right / 90% auto no-repeat;
 }
 .feature:has(#feat-finetuning) .feature__inner {
-  background: #f5f4f1 url("finetuning-card.jpg?v=5") top right / 90% auto no-repeat;
+  background:
+    url("finetuning-diorama.png?v=6") top right / 90% auto no-repeat,
+    radial-gradient(ellipse 55% 75% at 0% 100%, rgba(246,246,246,.9), rgba(246,246,246,0) 70%),
+    linear-gradient(90deg, rgba(246,246,245,1) 0%, rgba(244,243,239,.55) 35%, rgba(243,242,238,0) 60%),
+    rgb(240,238,231);
 }
 .feature:has(#feat-strengthen) .feature__inner::before,
 .feature:has(#feat-culture) .feature__inner::before,
