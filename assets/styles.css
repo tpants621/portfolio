@@ -1,6 +1,6 @@
 /* ============================================================
    TETHER — design system (extracted from Salient/Tether demo)
-   Tokens, type scale, components. Edit freely from here. Testing Push.
+   Tokens, type scale, components. Edit freely from here.
    ============================================================ */
 
 /* ---- Fonts ---- */
@@ -513,28 +513,38 @@ h2 { font-weight: 400; }
 .feature__media image-slot { position: relative; z-index: 1; width: 100%; height: clamp(190px, 19vw, 300px); border-radius: 16px; overflow: hidden; transform: translate(6%, 24%) scale(1.2); transform-origin: 100% 100%; }   /* kept smaller than the text block so the TEXT drives the row height; scaled + nudged down-right visually so the prompts don't shift */
 /* push the prompts down so they clear the imagery */
 .feature:has(#feat-strengthen) .feature__ask,
-.feature:has(#feat-culture) .feature__ask { margin-top: clamp(40px, 5vw, 80px); }
+.feature:has(#feat-culture) .feature__ask,
+.feature:has(#feat-finetuning) .feature__ask { margin-top: clamp(40px, 5vw, 80px); }
 
 /* ---- Full-bleed diorama image as the card surface, text overlaid (cards 1 & 2) ---- */
 .feature:has(#feat-strengthen) .feature__inner {
-  background: #f5f4f1 url("accutech-card-5.jpg") top right / 90% auto no-repeat;
+  background: #f5f4f1 url("accutech-card-5.jpg") right -45px / 90% auto no-repeat;
 }
 .feature:has(#feat-culture) .feature__inner {
   background: #f5f4f1 url("moneytree-card-3.jpg") top right / 90% auto no-repeat;
 }
+.feature:has(#feat-finetuning) .feature__inner {
+  background: #f5f4f1 url("finetuning-card.jpg?v=5") top right / 90% auto no-repeat;
+}
 .feature:has(#feat-strengthen) .feature__inner::before,
-.feature:has(#feat-culture) .feature__inner::before { display: none; }   /* no dot field over the photo */
+.feature:has(#feat-culture) .feature__inner::before,
+.feature:has(#feat-finetuning) .feature__inner::before { display: none; }   /* no dot field over the photo */
 .feature:has(#feat-strengthen) .feature__media,
-.feature:has(#feat-culture) .feature__media { display: none; }            /* image IS the background now */
+.feature:has(#feat-culture) .feature__media,
+.feature:has(#feat-finetuning) .feature__media { display: none; }            /* image IS the background now */
 .feature:has(#feat-strengthen) .feature__top,
-.feature:has(#feat-culture) .feature__top { grid-template-columns: 1fr; } /* text spans, image behind */
+.feature:has(#feat-culture) .feature__top,
+.feature:has(#feat-finetuning) .feature__top { grid-template-columns: 1fr; } /* text spans, image behind */
 /* keep the overlaid text clear of the diorama: cap width + extra right padding */
 .feature:has(#feat-strengthen) .feature__text,
-.feature:has(#feat-culture) .feature__text { max-width: min(600px, 48%); box-sizing: border-box; padding-right: calc(clamp(28px, 4vw, 64px) + 25px); }
+.feature:has(#feat-culture) .feature__text,
+.feature:has(#feat-finetuning) .feature__text { max-width: min(600px, 48%); box-sizing: border-box; padding-right: calc(clamp(28px, 4vw, 64px) + 25px); }
 .feature:has(#feat-strengthen) .feature__text h2,
 .feature:has(#feat-strengthen) .feature__text .body,
 .feature:has(#feat-culture) .feature__text h2,
-.feature:has(#feat-culture) .feature__text .body { max-width: 100%; }
+.feature:has(#feat-culture) .feature__text .body,
+.feature:has(#feat-finetuning) .feature__text h2,
+.feature:has(#feat-finetuning) .feature__text .body { max-width: 100%; }
 .feature__media image-slot[data-filled]::part(frame) { background: transparent; }   /* no gray backing behind uploaded images */
 
 /* ---- “Ask Me About” interview-prompt section (full-width, below the top row) ---- */
@@ -727,15 +737,16 @@ h2 { font-weight: 400; }
   /* Cards 1 & 2 on mobile: plain near-white surface with a dedicated mobile
      diorama image shown ABOVE the text (see .feature__mobimg). */
   .feature:has(#feat-strengthen) .feature__inner,
-  .feature:has(#feat-culture) .feature__inner { background: #f6f5f1; }
+  .feature:has(#feat-culture) .feature__inner,
+  .feature:has(#feat-finetuning) .feature__inner { background: #f6f5f1; }
   .feature__inner .feature__mobimg { display: block; width: 100%; height: auto; }
   /* full-width text on phone (no side-by-side image to clear) */
-  .feature:has(#feat-strengthen) .feature__text, .feature:has(#feat-culture) .feature__text { max-width: none; padding-right: clamp(28px, 4vw, 64px); }
+  .feature:has(#feat-strengthen) .feature__text, .feature:has(#feat-culture) .feature__text, .feature:has(#feat-finetuning) .feature__text { max-width: none; padding-right: clamp(28px, 4vw, 64px); }
   .feature__top { grid-template-columns: 1fr; }
   .ask-list { grid-template-columns: 1fr; }
   .feature__media { min-height: 320px; order: -1; }
-  .feature__media image-slot, .feature__media image-slot#feat-strengthen, .feature__media image-slot#feat-culture { transform: none; }   /* no visual scale-up on single-column phone view */
-  .feature:has(#feat-strengthen) .feature__ask, .feature:has(#feat-culture) .feature__ask { margin-top: 0; }
+  .feature__media image-slot, .feature__media image-slot#feat-strengthen, .feature__media image-slot#feat-culture, .feature__media image-slot#feat-finetuning { transform: none; }   /* no visual scale-up on single-column phone view */
+  .feature:has(#feat-strengthen) .feature__ask, .feature:has(#feat-culture) .feature__ask, .feature:has(#feat-finetuning) .feature__ask { margin-top: 0; }
   /* Mobile: disable scroll-driven stack — simple flowing cards */
   .features__track { height: auto !important; }
   .features__stage { position: static; height: auto; display: block; overflow: visible; padding-block: clamp(40px,8vw,72px) 0; }
@@ -1018,6 +1029,22 @@ h2 { font-weight: 400; }
   .showcase:not(.is-ready) .showcase__col { flex-basis: 100%; }
 }
 
+/* ---- Mobile scroll performance ------------------------------------------
+   A fixed element with backdrop-filter: blur(30px) forces the browser to
+   re-sample + re-blur the entire page behind it on EVERY scroll frame. On
+   phones (esp. over the image-heavy portfolio) that stalls the scroll. Swap
+   the live blur for a near-solid background on mobile — looks ~identical,
+   costs nothing per frame. Desktop keeps the real glass blur. */
+@media (max-width: 820px) {
+  .sitebar {
+    background: rgba(255,255,255,.92);
+    -webkit-backdrop-filter: none; backdrop-filter: none;
+  }
+  /* these get transform:none !important on mobile, so the promoted GPU layers
+     are pure overhead — release them */
+  .showcase__board, .showcase__col, .showcase__viewport { will-change: auto; }
+}
+
 /* ============================================================
    QUICK-PORTFOLIO CATEGORY MENU — floating pill, mirrors the top
    nav but smaller + no brand. Revealed only while the collage is
@@ -1125,6 +1152,9 @@ h2 { font-weight: 400; }
     align-self: center; width: max-content; max-width: calc(100% - 32px);
     margin: 20px auto 2px; gap: 4px;
     overflow-x: auto; scrollbar-width: none;
+    /* drop the live blur on mobile (scroll-perf) — near-solid bg instead */
+    background: rgba(255,255,255,.96);
+    -webkit-backdrop-filter: none; backdrop-filter: none;
   }
   .sc-menu::-webkit-scrollbar { display: none; }
 
